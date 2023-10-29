@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.0)
+
+project(algos)
+
+add_executable(algos src/main.c src/sorting.c src/utils.c src/data_types.c)
+
