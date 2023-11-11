@@ -28,5 +28,7 @@ int linked_list_length(LinkedListNode* head);
 // Calls the function for each node in the linked list
 void linked_list_for_each(LinkedListNode* head, void (*func)(void*));
 
+void* linked_list_get_at_index(LinkedListNode* head, int index);
+
 #endif
 

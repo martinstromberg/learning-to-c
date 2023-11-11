@@ -2,31 +2,27 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "stack.h"
-
-void printInt(void* data) {
-    printf("%d\n", *((int*)data));
-}
+#include "queue.h"
 
 int main() {
     srand(time(NULL)); // initializes srand, call only once
     
     int values[] = { 1, 2, 3, 4, 5 };
 
-    Stack* stack = stack_create();
+    Queue* queue = queue_create();
     for (int i = 0; i < 5; i++) {
-        stack_push(stack, &values[i]);
+        queue_enqueue(queue, &values[i]);
     }
 
-    printf("Stack size: %d\n", stack_size(stack));
+    printf("Stack size: %d\n", queue_length(queue));
 
-    while (stack_peek(stack)) {
-        void* value = stack_pop(stack);
+    while (queue_length(queue) > 0) {
+        void* value = queue_dequeue(queue);
         printf("%d\n", *((int*)value));
         free(value);
     }
 
-    free(stack);
+    free(queue);
 
     return 0;
 }

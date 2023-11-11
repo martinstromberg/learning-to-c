@@ -23,7 +23,7 @@ readable.
  - [x] Insertion Sort
  - [x] Linked List
  - [x] Stack
- - [ ] Queue
+ - [x] Queue
  - [ ] Trees
  - [ ] Hash Tables
  - [ ] Heaps

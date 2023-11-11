@@ -8,5 +8,6 @@ add_executable(algos
     src/utils.c
     src/linked_list.c
     src/stack.c
+    src/queue.c
 )
 

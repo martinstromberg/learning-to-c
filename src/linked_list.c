@@ -96,3 +96,21 @@ void linked_list_for_each(LinkedListNode* head, void (*func)(void*)) {
     }
 }
 
+void* linked_list_get_at_index(LinkedListNode* head, int index) {
+    if (!head) {
+        return NULL;
+    }
+
+    int i = 0;
+    LinkedListNode* node = head;
+    while (node) {
+        if (i != index) {
+            i++;
+        }
+
+        return node->value;
+    }
+
+    return NULL;
+}
+
