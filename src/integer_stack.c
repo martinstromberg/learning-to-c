@@ -40,7 +40,7 @@ void int_stack_push(IntStack* stack, int value) {
         return;
     }
 
-    IntegerLinkedListNode* node = create_linked_list_node(value);
+    IntegerLinkedListNode* node = create_integer_list_node(value);
     if (!node) {
         fprintf(stderr, "int_stack_push: Memory allocation failed!\n");
         exit(EXIT_FAILURE);
@@ -55,7 +55,7 @@ int int_stack_size(IntStack* stack) {
         return 0;
     }
 
-    return linked_list_length(stack->top);
+    return integer_list_length(stack->top);
 }
 
 void int_stack_clear(IntStack* stack) {

@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-IntegerLinkedListNode* create_linked_list_node(int value) {
+IntegerLinkedListNode* create_integer_list_node(int value) {
     IntegerLinkedListNode* node = malloc(sizeof *node);
     if (node) {
         node->value = value;
@@ -15,7 +15,7 @@ IntegerLinkedListNode* create_linked_list_node(int value) {
 }
 
 IntegerLinkedListNode* add_node_to_tail(IntegerLinkedListNode* head, int value) {
-    IntegerLinkedListNode* tail = create_linked_list_node(value);
+    IntegerLinkedListNode* tail = create_integer_list_node(value);
 
     if (head == NULL) {
         return tail;
@@ -31,7 +31,7 @@ IntegerLinkedListNode* add_node_to_tail(IntegerLinkedListNode* head, int value) 
     return tail;
 }
 
-IntegerLinkedListNode* linked_list_from_array(int arr[], int size) {
+IntegerLinkedListNode* integer_list_from_array(int arr[], int size) {
     if (size == 0) {
         return NULL;
     }
@@ -47,8 +47,8 @@ IntegerLinkedListNode* linked_list_from_array(int arr[], int size) {
     return head;
 }
 
-int* linked_list_to_array(IntegerLinkedListNode* head) {
-    int size = linked_list_length(head);
+int* integer_list_to_array(IntegerLinkedListNode* head) {
+    int size = integer_list_length(head);
 
     int* arr = (int*) malloc(size * sizeof(int));
     int i = 0;
@@ -60,7 +60,7 @@ int* linked_list_to_array(IntegerLinkedListNode* head) {
     return arr;
 }
 
-void print_linked_list_values(IntegerLinkedListNode* head) {
+void print_integer_list_values(IntegerLinkedListNode* head) {
     if (head == NULL) {
         return;
     }
@@ -74,7 +74,7 @@ void print_linked_list_values(IntegerLinkedListNode* head) {
     printf("\n");
 }
 
-int linked_list_length(IntegerLinkedListNode* head) {
+int integer_list_length(IntegerLinkedListNode* head) {
     int retval = 0;
 
     if (head == NULL) {
@@ -119,7 +119,7 @@ void free_linked_integer_list(IntegerLinkedListNode* head) {
     }
 }
 
-IntegerLinkedListNode* replace_linked_list_node_at(IntegerLinkedListNode* head, int index, int value) {
+IntegerLinkedListNode* replace_integer_list_node_at(IntegerLinkedListNode* head, int index, int value) {
     if (head == NULL) {
         return NULL;
     }

@@ -2,34 +2,25 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "integer_stack.h"
-#include "sorting.h"
-#include "utils.h"
+#include "linked_list.h"
+
+void printInt(void* data) {
+    printf("%d\n", *((int*)data));
+}
 
 int main() {
     srand(time(NULL)); // initializes srand, call only once
+    
+    int values[] = { 1, 2, 3, 4, 5 };
 
-    IntStack* stack = int_stack_create();
-    if (!stack) {
-        fprintf(stderr, "The program failed to allocate an Int Stack!\n");
-        exit(EXIT_FAILURE);
+    LinkedListNode* head = linked_list_node_create(&values[0]);
+    for (int i = 1; i < 5; i++) {
+        linked_list_node_append(head, &values[i]);
     }
 
-    int_stack_push(stack, 5);
-    int_stack_push(stack, 4);
-    int_stack_push(stack, 3);
-    int_stack_push(stack, 2);
-    int_stack_push(stack, 1);
+    linked_list_for_each(head, printInt);
 
-    printf("Stack size: %d\n", int_stack_size(stack));
-    while (int_stack_peek(stack)) {
-        int* value = int_stack_pop(stack);
-
-        printf("Value: %d\n", *value);
-        free(value);
-    }
-
-    free(stack);
+    linked_list_free(head);
 
     return 0;
 }
