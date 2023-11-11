@@ -24,7 +24,7 @@ readable.
  - [x] Linked List
  - [x] Stack
  - [x] Queue
- - [ ] Trees
+ - [/] Trees
  - [ ] Hash Tables
  - [ ] Heaps
  - [ ] Graphs
