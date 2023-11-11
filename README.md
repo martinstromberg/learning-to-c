@@ -11,3 +11,19 @@ hold myself to first and foremost, but even more so by C standards. As it is
 merely a repository for my adventures into the C language however, it doesn't 
 really matter all that much so long as the code compiles, runs, and is somewhat 
 readable.
+
+## Checklist
+ - [x] Bubble Sort
+ - [x] Selection Sort
+ - [x] Insertion Sort
+ - [x] Linked List
+ - [x] Stack
+ - [ ] Queue
+ - [ ] Trees
+ - [ ] Hash Tables
+ - [ ] Heaps
+ - [ ] Graphs
+ - [ ] Skip Lists
+ - [ ] Bloom Filters
+ - [ ] Disjoint Sets / Union-Find
+
