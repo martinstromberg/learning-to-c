@@ -1,16 +1,11 @@
-#include "data_types.h"
+#include "integer_list.h"
 
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *                              Linked List                                  *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
 IntegerLinkedListNode* create_linked_list_node(int value) {
     IntegerLinkedListNode* node = malloc(sizeof *node);
-
     if (node) {
         node->value = value;
         node->next = NULL;

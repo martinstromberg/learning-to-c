@@ -1,15 +1,14 @@
-#ifndef DATA_TYPES_H
-#define DATA_TYPES_H
+#ifndef INTEGER_LIST_H
+#define INTEGER_LIST_H
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *                              Linked List                                  *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 struct IntegerLinkedListNode {
     int value;
     struct IntegerLinkedListNode* next;
 };
 
 typedef struct IntegerLinkedListNode IntegerLinkedListNode;
+
+IntegerLinkedListNode* create_linked_list_node(int value);
 
 IntegerLinkedListNode* add_node_to_tail(IntegerLinkedListNode* head, int value);
 
@@ -26,9 +25,4 @@ void free_linked_integer_list(IntegerLinkedListNode* head);
 
 IntegerLinkedListNode* replace_linked_list_node_at(IntegerLinkedListNode* head, int index, int value);
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *                           Some other data type                            *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-#endif 
-
+#endif

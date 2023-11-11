@@ -2,32 +2,34 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "data_types.h"
+#include "integer_stack.h"
 #include "sorting.h"
 #include "utils.h"
 
 int main() {
     srand(time(NULL)); // initializes srand, call only once
 
-    const int AMOUNT = 10;
-    const int MIN = -10;
-    const int MAX = 10;
+    IntStack* stack = int_stack_create();
+    if (!stack) {
+        fprintf(stderr, "The program failed to allocate an Int Stack!\n");
+        exit(EXIT_FAILURE);
+    }
 
-    int* numbers = (int*) malloc(AMOUNT * sizeof(int));
+    int_stack_push(stack, 5);
+    int_stack_push(stack, 4);
+    int_stack_push(stack, 3);
+    int_stack_push(stack, 2);
+    int_stack_push(stack, 1);
 
-    set_random_ints_with_range(numbers, AMOUNT, MIN, MAX);
-    print_integers(numbers, AMOUNT);
+    printf("Stack size: %d\n", int_stack_size(stack));
+    while (int_stack_peek(stack)) {
+        int* value = int_stack_pop(stack);
 
-    IntegerLinkedListNode* head = linked_list_from_array(numbers, AMOUNT);
-    free(numbers);
-    print_linked_list_values(head);
+        printf("Value: %d\n", *value);
+        free(value);
+    }
 
-    int len = linked_list_length(head);
-    int* arr = linked_list_to_array(head);
-    free_linked_integer_list(head);
-
-    print_integers(arr, len);
-    free(arr);
+    free(stack);
 
     return 0;
 }
