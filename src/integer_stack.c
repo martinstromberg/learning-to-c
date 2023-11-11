@@ -11,7 +11,7 @@ IntStack* int_stack_create() {
 }
 
 int* int_stack_peek(IntStack* stack) {
-    if (!stack->top) {
+    if (!stack || !stack->top) {
         return NULL;
     }
 
@@ -19,7 +19,7 @@ int* int_stack_peek(IntStack* stack) {
 }
 
 int* int_stack_pop(IntStack* stack) {
-    if (!stack->top) {
+    if (!stack || !stack->top) {
         return NULL;
     }
 
@@ -36,6 +36,10 @@ int* int_stack_pop(IntStack* stack) {
 }
 
 void int_stack_push(IntStack* stack, int value) {
+    if (!stack) {
+        return;
+    }
+
     IntegerLinkedListNode* node = create_linked_list_node(value);
     if (!node) {
         fprintf(stderr, "int_stack_push: Memory allocation failed!\n");
@@ -47,10 +51,18 @@ void int_stack_push(IntStack* stack, int value) {
 }
 
 int int_stack_size(IntStack* stack) {
+    if (!stack) {
+        return 0;
+    }
+
     return linked_list_length(stack->top);
 }
 
 void int_stack_clear(IntStack* stack) {
+    if (!stack) {
+        return;
+    }
+
     free_linked_integer_list(stack->top);
     stack->top = NULL;
 }
