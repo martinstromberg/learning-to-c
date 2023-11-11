@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "linked_list.h"
+#include "stack.h"
 
 void printInt(void* data) {
     printf("%d\n", *((int*)data));
@@ -13,14 +13,20 @@ int main() {
     
     int values[] = { 1, 2, 3, 4, 5 };
 
-    LinkedListNode* head = linked_list_node_create(&values[0]);
-    for (int i = 1; i < 5; i++) {
-        linked_list_node_append(head, &values[i]);
+    Stack* stack = stack_create();
+    for (int i = 0; i < 5; i++) {
+        stack_push(stack, &values[i]);
     }
 
-    linked_list_for_each(head, printInt);
+    printf("Stack size: %d\n", stack_size(stack));
 
-    linked_list_free(head);
+    while (stack_peek(stack)) {
+        void* value = stack_pop(stack);
+        printf("%d\n", *((int*)value));
+        free(value);
+    }
+
+    free(stack);
 
     return 0;
 }

@@ -7,7 +7,6 @@ add_executable(algos
     src/sorting.c
     src/utils.c
     src/linked_list.c
-    src/integer_list.c
-    src/integer_stack.c
+    src/stack.c
 )
 
