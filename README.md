@@ -14,6 +14,7 @@ readable.
 
 ## Commands (in case I forget)
 **Building**: `cmake . && make`
+
 **Debugging memory**: `cmake -S . -D CMAKE_BUILD_TYPE=Debug && make && valgrind -s --leak-check=yes --track-origins=yes ./algos`
 
 ## Checklist
