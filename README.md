@@ -12,6 +12,10 @@ merely a repository for my adventures into the C language however, it doesn't
 really matter all that much so long as the code compiles, runs, and is somewhat 
 readable.
 
+## Commands (in case I forget)
+**Building**: `cmake . && make`
+**Debugging memory**: `cmake -S . -D CMAKE_BUILD_TYPE=Debug && make && valgrind -s --leak-check=yes --track-origins=yes ./algos`
+
 ## Checklist
  - [x] Bubble Sort
  - [x] Selection Sort
