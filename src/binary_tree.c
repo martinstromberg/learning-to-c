@@ -55,7 +55,7 @@ int tree_node_get_leaf_count(BinaryTreeNode* node) {
     return left + right;
 }
 
-void tree_node_bts_insert(BinaryTreeNode* node, void* value, int (*compfn)(void*, void*)) {
+void tree_node_bst_insert(BinaryTreeNode* node, void* value, int (*compfn)(void*, void*)) {
     if (!node) {
         return;
     }
@@ -65,7 +65,7 @@ void tree_node_bts_insert(BinaryTreeNode* node, void* value, int (*compfn)(void*
         if (!node->right) {
             node->right = tree_node_create(value);
         } else {
-            tree_node_bts_insert(node->right, value, compfn);
+            tree_node_bst_insert(node->right, value, compfn);
         }
 
         return;
@@ -74,8 +74,46 @@ void tree_node_bts_insert(BinaryTreeNode* node, void* value, int (*compfn)(void*
     if (!node->left) {
         node->left = tree_node_create(value);
     } else {
-        tree_node_bts_insert(node->left, value, compfn);
+        tree_node_bst_insert(node->left, value, compfn);
     }
 
+}
+
+void tree_node_free(BinaryTreeNode* node) {
+    if (!node) {
+        return;
+    }
+
+    if (node->left) {
+        tree_node_free(node->left);
+    }
+
+    if (node->right) {
+        tree_node_free(node->right);
+    }
+
+    node->left = NULL;
+    node->right = NULL;
+    node->value = NULL;
+
+    free(node);
+}
+
+void tree_node_for_each(BinaryTreeNode* node, void (*fn)(void*)) {
+    if (!node) {
+        return;
+    }
+
+    if (node->left) {
+        tree_node_for_each(node->left, fn);
+    }
+
+    if (node->value) {
+        fn(node->value);
+    }
+
+    if (node->right) {
+        tree_node_for_each(node->right, fn);
+    }
 }
 
