@@ -2,33 +2,32 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "binary_tree.h"
+#include "hash_table.h"
 
-int compare(void* a, void* b) {
-    int x = *(int*)a;
-    int y = *(int*)b;
-    return x - y;
-}
+unsigned long hash_fn(void* data) {
+    char* characters = (char*)data;
 
-void printInt(void* data) {
-    printf("%d\n", *((int*)data));
+    int char_code = (int)characters[0];
+
+    return (unsigned long)(char_code % 26);
 }
 
 int main() {
     srand(time(NULL)); // initializes srand, call only once
     
-    int values[] = { 4, 2, 6, 1, 3, 5, 7 };
-    BinaryTreeNode* root = tree_node_create(&values[0]);
-    for (int i = 1; i < 7; i++) {
-        tree_node_bst_insert(root, &values[i], compare);
+    HashTable* hash_table = hash_table_create(26, hash_fn);
+
+    char key[4] = { 'b', 'a', 'r', '\0' };
+    char expected[4] = { 'f', 'o', 'o', '\0' };
+    hash_table_add(hash_table, key, expected);
+
+    char* actual = (char*)hash_table_get(hash_table, key);
+
+    char actual_sz[4];
+    for (int i = 0; i < 4; i++) {
+        actual_sz[i] = actual[i];
     }
-
-    printf("Size: %d\n", tree_node_get_node_count(root));
-    printf("Height: %d\n", tree_node_get_height(root));
-    printf("Leaves: %d\n", tree_node_get_leaf_count(root));
-
-    tree_node_for_each(root, printInt);
-    tree_node_free(root);
+    printf("%s\n", actual_sz);
     
     return 0;
 }

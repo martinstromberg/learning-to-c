@@ -10,5 +10,6 @@ add_executable(algos
     src/stack.c
     src/queue.c
     src/binary_tree.c
+    src/hash_table.c
 )
 
